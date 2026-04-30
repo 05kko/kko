@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanban Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">// KKO Techno BLOG and KANBAN BOARD</a>
+  <div class="nav-links">
+    <a href="index.html">🏠 <span data-i18n="home">Bosh</span></a>
+    <a href="blog.html">📰 <span data-i18n="blog">Blog</span></a>
+    <a href="kanban.html" class="active">📋 <span data-i18n="kanban">Kanban</span></a>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn" onclick="setLang('uz')">🇺🇿 UZ</button>
+    <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+    <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
+  </div>
+</nav>
+
+<div class="kanban-page">
+  <div class="page-header">
+    <h2>📋 <span data-i18n="kanban_title">Kanban Board</span></h2>
+    <p data-i18n="kanban_desc">Vazifa kiriting — AI avtomatik subtask taklif qiladi</p>
+  </div>
+
+  <div class="add-task-row">
+    <input class="task-input" id="taskInput"
+      data-i18n-placeholder="task_placeholder"
+      placeholder="Masalan: Veb-sayt yaratish..."
+      onkeydown="if(event.key==='Enter') addTask()">
+    <button class="add-btn" onclick="addTask()" data-i18n="add_btn">+ Qo'shish</button>
+  </div>
+
+  <div class="board">
+    <div class="column">
+      <div class="col-header">
+        <div class="col-title"><div class="col-dot todo"></div> <span data-i18n="col_todo">Bajarilmagan</span></div>
+        <span class="col-count" id="count-todo">0</span>
+      </div>
+      <div class="cards-drop" id="col-todo"
+        ondragover="onDragOver(event)" ondrop="onDrop(event,'todo')" ondragleave="onDragLeave(event)">
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="col-header">
+        <div class="col-title"><div class="col-dot doing"></div> <span data-i18n="col_doing">Jarayonda</span></div>
+        <span class="col-count" id="count-doing">0</span>
+      </div>
+      <div class="cards-drop" id="col-doing"
+        ondragover="onDragOver(event)" ondrop="onDrop(event,'doing')" ondragleave="onDragLeave(event)">
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="col-header">
+        <div class="col-title"><div class="col-dot done"></div> <span data-i18n="col_done">Bajarildi</span></div>
+        <span class="col-count" id="count-done">0</span>
+      </div>
+      <div class="cards-drop" id="col-done"
+        ondragover="onDragOver(event)" ondrop="onDrop(event,'done')" ondragleave="onDragLeave(event)">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" style="display:none;">
+  <div class="modal">
+    <h3 data-i18n="modal_title">🤖 AI Subtask Taklifi</h3>
+    <span class="modal-task-label" id="modalTaskLabel"></span>
+    <div class="subtasks-container" id="subtasksContainer"></div>
+    <div class="modal-actions">
+      <button class="btn-confirm" onclick="confirmTask()" data-i18n="modal_confirm">✅ Qabul qilish</button>
+      <button class="btn-cancel" onclick="closeModal()" data-i18n="modal_cancel">Bekor</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('lang') || 'uz';
+    setLang(saved, false);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KKO Techno BLOG and KANBAN BOARD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">// KKO Techno BLOG and KANBAN BOARD</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">🏠 <span data-i18n="home">Bosh</span></a>
+    <a href="blog.html">📰 <span data-i18n="blog">Blog</span></a>
+    <a href="kanban.html">📋 <span data-i18n="kanban">Kanban</span></a>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn" onclick="setLang('uz')">🇺🇿 UZ</button>
+    <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+    <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
+  </div>
+</nav>
+
+<div class="home">
+  <div class="home-inner">
+    <div class="badge" data-i18n="hero_badge">KKO website</div>
+    <h1>
+      <span data-i18n="hero_title1">Salom,</span>
+      <br><span class="gradient-text" data-i18n="hero_title2">kelajak</span>
+      <br><span data-i18n="hero_title3">bugun boshlanadi</span>
+    </h1>
+    <p data-i18n-html="hero_desc">Tech blog va kanban board — ikkalasi bitta saytda.<br>Sun'iy intellekt bilan ishlaydi.</p>
+    
+    <div class="home-cards">
+      <a class="home-card" href="blog.html">
+        <span class="card-icon">📰</span>
+        <h3 data-i18n="blog_card_title">Tech Blog</h3>
+        <p data-i18n="blog_card_desc">Reddit dan real vaqtdagi texnologiya yangiliklari. AI TL;DR bilan qisqacha o'qing.</p>
+        <div class="card-arrow" data-i18n="blog_card_btn">BLOGGA O'TISH →</div>
+      </a>
+
+      <a class="home-card" href="kanban.html">
+        <span class="card-icon">📋</span>
+        <h3 data-i18n="kanban_card_title">AI Kanban</h3>
+        <p data-i18n="kanban_card_desc">Vazifalaringizni boshqaring. AI sizga sub-vazifalar yaratishda yordam beradi.</p>
+        <div class="card-arrow" data-i18n="kanban_card_btn">BOARDGA O'TISH →</div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

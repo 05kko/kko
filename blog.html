@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">// KKO Techno BLOG and KANBAN BOARD</a>
+  <div class="nav-links">
+    <a href="index.html">🏠 <span data-i18n="home">Bosh</span></a>
+    <a href="blog.html" class="active">📰 <span data-i18n="blog">Blog</span></a>
+    <a href="kanban.html">📋 <span data-i18n="kanban">Kanban</span></a>
+  </div>
+  <!-- TIL TANLASH -->
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('uz')">🇺🇿 UZ</button>
+    <button class="lang-btn" onclick="setLang('ru')">🇷🇺 RU</button>
+    <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
+  </div>
+</nav>
+
+<div class="blog-page">
+  <div class="page-header">
+    <h2>📰 <span data-i18n="blog_title">Tech Blog</span></h2>
+    <p data-i18n="blog_desc"> HackerNews va DEV.to dan real vaqtdagi texnologiya yangiliklari • AI TL;DR bilan</p>
+  </div>
+
+  <!-- QIDIRUV + FILTRLAR -->
+  <div class="controls">
+    <div class="search-box">
+      <span>🔍</span>
+      <input type="text" id="searchInput" data-i18n-placeholder="search_placeholder" placeholder="Qidiring..." oninput="filterPosts()">
+    </div>
+    <div class="filter-tabs">
+      <button class="filter-tab active" onclick="setFilter(this,'all')" data-i18n="all">⭐ Barchasi</button>
+      <button class="filter-tab" onclick="setFilter(this,'programming')">💻 Programming</button>
+      <button class="filter-tab" onclick="setFilter(this,'webdev')">🌐 WebDev</button>
+      <button class="filter-tab" onclick="setFilter(this,'artificial')">🤖 AI</button>
+      <button class="filter-tab" onclick="setFilter(this,'technology')">⚡ Technology</button>
+    </div>
+  </div>
+
+  <div class="sort-row">
+    <span class="results-count" id="resultsCount" data-i18n="loading">Yuklanmoqda...</span>
+    <select class="sort-select" id="sortSelect" onchange="loadPosts(currentSub)">
+      <option value="hot">🔥 Hot</option>
+      <option value="new">🆕 New</option>
+      <option value="top">📈 Top</option>
+    </select>
+  </div>
+
+  <div class="posts-container" id="postsContainer"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('lang') || 'uz';
+    setLang(saved, false);
+    loadPosts('all');
+  });
+</script>
+</body>
+</html>
